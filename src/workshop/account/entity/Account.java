@@ -10,6 +10,15 @@ public class Account {
 		System.out.println("기본생성자 호출됨");
 	}
 	
+	//Constructor Overloading(생성자 중복정의)
+	public Account(String custId, String acctId, int balance) {
+		//this.custId = custId;
+		//this.acctId = acctId;
+		setCustId(custId);
+		setAcctId(acctId);
+		this.balance = balance;
+	}
+	
 	public String getAcctId() {
 		return acctId;
 	}
