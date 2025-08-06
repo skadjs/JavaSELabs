@@ -25,9 +25,9 @@ public class Account {
 		return balance;
 	}
 
-	public void setBalance(int balance) {
-		this.balance = balance;
-	}
+//	public void setBalance(int balance) {
+//		this.balance = balance;
+//	}
 	
 	//입금
 	public void deposit(int amount) {
