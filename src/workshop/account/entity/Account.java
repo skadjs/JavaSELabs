@@ -28,4 +28,14 @@ public class Account {
 	public void setBalance(int balance) {
 		this.balance = balance;
 	}
+	
+	//입금
+	public void deposit(int amount) {
+		this.balance += amount;
+	}
+	
+	//출금
+	public void withdraw(int amount) {
+		this.balance -= amount;
+	}
 }
