@@ -1,13 +1,22 @@
 package mylab.student.entity;
 
+import mylab.student.exception.InvalidGradeException;
+
 public class Student {
-	//Student 클래스를 작성하고, 다음 조건을 만족하도록 캡슐화(Encapsulation)를 적용하시오.
-	//학년은 1~4 까지만 허용되며, 범위를 벗어날 경우 오류 메시지를 출력하도록 setGrade() 구현
+	
 	private int studentId;
 	private String name;
 	private String major;
 	private int grade;
 	
+	//Constructor Overloading(생성자 중복정의)
+	public Student(int studentId, String name, String major) {
+		setStudentId(studentId);
+		setName(name);
+		setMajor(major);
+	}
+	
+	//studentId 필드에 대한 getter, setter
 	public int getStudentId() {
 		return studentId;
 	}
@@ -16,6 +25,7 @@ public class Student {
 		this.studentId = studentId;
 	}
 	
+	//name 필드에 대한 getter, setter
 	public String getName() {
 		return name;
 	}
@@ -24,6 +34,7 @@ public class Student {
 		this.name = name;
 	}
 	
+	//major 필드에 대한 getter, setter
 	public String getMajor() {
 		return major;
 	}
@@ -32,11 +43,17 @@ public class Student {
 		this.major = major;
 	}
 	
+	//grade 필드에 대한 getter, setter
 	public int getGrade() {
 		return grade;
 	}
 	
-	public void setGrade(int grade) {
+	public void setGrade(int grade) throws InvalidGradeException {
+		//학년이 4학년을 초과할 경우 -> 예외처리
+		if(grade > 4) {
+			String errMessage = "학년은 1~4 사이여야 합니다.";
+			throw new InvalidGradeException(errMessage);
+		} 
 		this.grade = grade;
 	}
 }
