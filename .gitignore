@@ -16,3 +16,4 @@ bin/
 .springBeans
 .sts4-cache
 .idea/
+.DS_Store
