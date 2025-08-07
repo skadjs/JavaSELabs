@@ -19,6 +19,7 @@ public class Manager extends Employee {
 		return dept;
 	}
 	
+	@Override
 	public void manageSalary(double rate) {
 		salary = salary + salary * (rate/100);
 		salary += 20; //20만 원을 추가로 받는다.
