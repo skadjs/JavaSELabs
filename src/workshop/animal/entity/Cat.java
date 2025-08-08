@@ -13,27 +13,25 @@ public class Cat extends Animal implements Pet {
 		//super(4);
 		this("");
 	}
+	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public void setName(String name) {
-		// TODO Auto-generated method stub
+		this.name = name;
 		
 	}
 
 	@Override
 	public void play() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("고양이는 장화를 신고 놀아요!");
 	}
 
 	@Override
 	public void eat() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("고양이는 생선을 먹어요!");
 	}
 }
