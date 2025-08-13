@@ -1,50 +1,33 @@
 package workshop.person.control;
 
+import workshop.person.entity.PersonEntity;
 import java.util.Scanner;
 
-import workshop.person.entity.PersonEntity;
-
 public class PersonManager {
-
+	
 	public static void main(String[] args) {
-		//Scanner 객체 생성
+		
+		//Scanner 사용
+		System.out.println("==> 성별 정보를 입력하세요!");
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("==> 성별을 입력하세요!");
 		String inputValue = scanner.next();
-		char gender = inputValue.charAt(0); //String => char
+		char gender = inputValue.charAt(0); //String -> char 변경
+		scanner.close();
 		
-		System.out.println("==> 이름을 입력하세요!");
-		String name = scanner.next();
-		
-		System.out.println(String.format("입력하신 성별은 %s,이름은 %s",  gender, name) + "\n");
-		
+		//non-static 메서드 호출을 위한 객체 생성
 		PersonManager personMgr = new PersonManager();
-		//배열선언 및 초기화
-		PersonEntity[] persons = new PersonEntity[10];
-		//persons 변수는 PersonEntity[] 타입이고, persons[0]은 PersonEntity 타입이다.
-		personMgr.fillPerons(persons);
 		
+		//배열 선언 및 초기화
+		PersonEntity[] persons = new PersonEntity[10]; //persons 변수는 PersonEntity[] 타입, persons[0]은 PersonEntity 타입
+		personMgr.fillPersons(persons);
+		
+		//인물 정보 출력
 		personMgr.printTitle("인물정보 조회시스템");
 		personMgr.showPerson(persons);
-		
-		String message = String.format("성별 : %s (은)는 %d 명입니다.", gender, personMgr.findByGender(persons, gender));
+				
+		//특정 성별이 몇 명인지 찾기
+		String message = String.format("성별 : %s (은)는 %d명입니다.", gender, personMgr.findByGender(persons, gender));
 		System.out.println(message);
-		
-		personMgr.showPerson(persons, name);
-		
-		scanner.close();
-	}
-	
-	public void showPerson(PersonEntity[] persons, String name) {
-		for(PersonEntity person : persons) {
-			if(person.getName().equals(name)) {
-				System.out.println("[이름] " + person.getName());
-				System.out.println("[성별] " + person.getGender());
-				System.out.println("[전화번호] " + person.getPhone());
-				System.out.println("[주소] " + person.getAddress());
-				break;
-			}
-		}
 	}
 	
 	public int findByGender(PersonEntity[] persons, char gender) {
@@ -57,14 +40,14 @@ public class PersonManager {
 		return genderCnt;
 	}
 
+	//for문 순회하며 정보 출력
 	public void showPerson(PersonEntity[] persons) {
-		//for loop를 순회하면서 
-		for(PersonEntity person:persons) {
-			System.out.println("[이름] " + person.getName() + "\t [성별] " + person.getGender() + "\t [전화번호] " + person.getPhone());
+		for(PersonEntity person : persons) { // "\t" <- 탭을 의미함(띄어쓰기 네 번)
+			System.out.println("[이름 ] " + person.getName() + "\t [성별] " + person.getGender() + "\t [전화번호] " + person.getPhone());
 		}
 	}
 
-	public void fillPerons(PersonEntity[] persons) {
+	public void fillPersons(PersonEntity[] persons) {
 		persons[0] = new PersonEntity("이성호","7212121028102", "인천 계양구", "032-392-2932");
 		persons[1] = new PersonEntity("김하늘","7302132363217", "서울 강동구", "02-362-1932");
 		persons[2] = new PersonEntity("박영수","7503111233201", "서울 성북구", "02-887-1542");
@@ -76,9 +59,9 @@ public class PersonManager {
 		persons[8] = new PersonEntity("황재현","7806231031101", "인천 중구", "032-327-2202");
 		persons[9] = new PersonEntity("최철수","7601211025101", "인천 계양구", "032-122-7832");
 	}
-	
+		
 	public void printTitle(String title) {
-		System.out.println("@@@@ " + title + " @@@@");
+		System.out.println("@@@ " + title + " @@@");
 		System.out.println();
 	}
 }
