@@ -8,11 +8,16 @@ public class PersonManager {
 	public static void main(String[] args) {
 		
 		//Scanner 사용
-		System.out.println("==> 성별 정보를 입력하세요!");
 		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("==> 성별을 입력하세요!"); //성별 입력 받기
 		String inputValue = scanner.next();
 		char gender = inputValue.charAt(0); //String -> char 변경
-		scanner.close();
+		
+		System.out.println("==> 이름을 입력하세요!"); //이름 입력 받기
+		String name = scanner.next();
+		
+		System.out.println(String.format("==> 입력하신 성별은 %s, 이름은 %s", gender, name) + "\n");
 		
 		//non-static 메서드 호출을 위한 객체 생성
 		PersonManager personMgr = new PersonManager();
@@ -28,6 +33,23 @@ public class PersonManager {
 		//특정 성별이 몇 명인지 찾기
 		String message = String.format("성별 : %s (은)는 %d명입니다.", gender, personMgr.findByGender(persons, gender));
 		System.out.println(message);
+		
+		//이름으로 사람 찾기 -> 결과(이름, 성별, 전화번호, 주소) 출력까지
+		personMgr.showPerson(persons, name);
+		
+		scanner.close();
+	}
+	
+	public void showPerson(PersonEntity[] persons, String name) {
+		for(PersonEntity person : persons) {
+			if(person.getName().equals(name)) {
+				System.out.println("[이름] " + person.getName());
+				System.out.println("[성별] " + person.getGender());
+				System.out.println("[전화번호] " + person.getPhone());
+				System.out.println("[주소] " + person.getAddress());
+				break;
+			}
+		}
 	}
 	
 	public int findByGender(PersonEntity[] persons, char gender) {
