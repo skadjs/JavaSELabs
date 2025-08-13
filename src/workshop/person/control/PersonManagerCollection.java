@@ -1,42 +1,46 @@
 package workshop.person.control;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 import workshop.person.entity.PersonEntity;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class PersonManagerCollection {
 
 	public static void main(String[] args) {
-		//Scanner 객체생성
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("==> 성별을 입력하세요!");
-		String inputValue = scanner.next();
-		char gender = inputValue.charAt(0); //String => char
 		
-		System.out.println("==> 이름을 입력하세요!");
+		//Scanner 사용
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("==> 성별을 입력하세요!"); //성별 입력 받기
+		String inputValue = scanner.next();
+		char gender = inputValue.charAt(0); //String -> char 변경
+		
+		System.out.println("==> 이름을 입력하세요!"); //이름 입력 받기
 		String name = scanner.next();
 		
 		System.out.println(String.format("==> 입력하신 성별은 %s, 이름은 %s", gender, name) + "\n");
 		
+		//non-static 메서드 호출을 위한 객체 생성
 		PersonManagerCollection personMgr = new PersonManagerCollection();
-		//배열선언 및 초기화
+		
+		//ArrayList 선언
 		List<PersonEntity> personList = new ArrayList<>();
+		personMgr.fillPersons(personList);
 		
-		//persons 변수는 PersonEntity[] 타입이고, persons[0]은 PersonEntity 타입이다.
-		personMgr.fillPersons(personList);		
-		
+		//인물 정보 출력
 		personMgr.printTitle("인물정보 조회시스템");
-		personMgr.showPerson(personList);		
-		
-		String message = String.format("성별 : %s (은)는   %d 명 입니다.", gender, personMgr.findByGender(personList, gender));
+		personMgr.showPerson(personList);
+				
+		//특정 성별이 몇 명인지 찾기
+		String message = String.format("성별 : %s (은)는 %d명입니다.", gender, personMgr.findByGender(personList, gender));
 		System.out.println(message);
 		
+		//이름으로 사람 찾기 -> 결과(이름, 성별, 전화번호, 주소) 출력까지
 		personMgr.showPerson(personList, name);
 		
 		scanner.close();
-
 	}
 	
 	public void showPerson(List<PersonEntity> persons, String name) {
@@ -51,7 +55,7 @@ public class PersonManagerCollection {
 		}
 	}
 	
-	public int findByGender(List<PersonEntity> persons, char gender ) {
+	public int findByGender(List<PersonEntity> persons, char gender) {
 		int genderCnt = 0;
 		for(PersonEntity person : persons) {
 			if(person.getGender() == gender) {
@@ -61,9 +65,9 @@ public class PersonManagerCollection {
 		return genderCnt;
 	}
 
+	//for문 순회하며 정보 출력
 	public void showPerson(List<PersonEntity> persons) {
-		//for loop를 순회하면서 
-		for(PersonEntity person:persons) {
+		for(PersonEntity person : persons) { // "\t" <- 탭을 의미함(띄어쓰기 네 번)
 			System.out.println("[이름 ] " + person.getName() + "\t [성별] " + person.getGender() + "\t [전화번호] " + person.getPhone());
 		}
 	}
@@ -80,10 +84,9 @@ public class PersonManagerCollection {
 		persons.add(new PersonEntity("황재현","7806231031101", "인천 중구", "032-327-2202"));
 		persons.add(new PersonEntity("최철수","7601211025101", "인천 계양구", "032-122-7832"));
 	}
-	
+		
 	public void printTitle(String title) {
-		System.out.println("@@@@ " + title + " @@@@");
+		System.out.println("@@@ " + title + " @@@");
 		System.out.println();
 	}
-
 }
