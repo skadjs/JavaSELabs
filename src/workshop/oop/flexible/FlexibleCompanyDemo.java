@@ -24,33 +24,26 @@ public class FlexibleCompanyDemo {
         // Manager(자식)가 가진 getDept() 메서드 호출하기
         Manager itMgr2 = (Manager) itMgr; // Employee 타입인 itMgr을 Manager로 casting
         System.out.println(itMgr2.getDept());
-        
-        
-        System.out.println("현재 월급입니다.");
-        
+       
         // Heterogeneous Collection => Employee 타입의 배열 선언
         // emps 변수 -> Employee[] 타입, emps[0] -> Employee 타입
         Employee[] emps = new Employee[4];
+        // 하나의 타입(Employee)에 여러 자식 타입(Manager, MereClerk)을 담는다 => 일괄처리 가능
         emps[0] = new Manager("길동", 250, "IT");
         emps[1] = new MereClerk("철수", 100);
         emps[2] = new MereClerk("영희", 100);
         emps[3] = new Manager("둘리", 200, "HR");
         
         for (Employee emp : emps) {
+        	System.out.println("현재 월급입니다.");
+        	System.out.println(emp.getName() + "의 현재 월급은 " + emp.getSalary() + " 만 원입니다.");
+        	emp.manageSalary(10);
+        	
+        }
+        
+        for (Employee emp : emps) {
+        	System.out.println("올린 후의 월급입니다.");
         	System.out.println(emp.getName() + "의 현재 월급은 " + emp.getSalary() + " 만 원입니다.");
         }
-        		
-        System.out.println("");
-        
-        System.out.println("올린 후의 월급입니다.");
-        
-        mereClerk1.manageSalary(10);
-        System.out.println(mereClerk1.getName() + "의 현재 월급은 " + mereClerk1.getSalary() + " 만 원입니다.");
-        
-        mereClerk2.manageSalary(10);
-        System.out.println(mereClerk2.getName() + "의 현재 월급은 " + mereClerk2.getSalary() + " 만 원입니다.");
-        
-        manager.manageSalary(10);
-        System.out.println(manager.getName() + "의 현재 월급은 " + manager.getSalary() + " 만 원입니다.");
-   }
+    }
 }
