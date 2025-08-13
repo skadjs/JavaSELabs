@@ -1,15 +1,12 @@
 package workshop.oop.flexible;
 
-import workshop.oop.flexible.Manager;
-import workshop.oop.flexible.MereClerk;
-
 public class FlexibleCompanyDemo {
+	
     public static void main(String[] args) {
         
         MereClerk mereClerk1 = new MereClerk("철수", 100);
         MereClerk mereClerk2 = new MereClerk("영희", 100);
         Manager manager = new Manager("홍길동", 200);
-        
         
         System.out.println("현재 월급입니다.");
         
@@ -18,7 +15,6 @@ public class FlexibleCompanyDemo {
         System.out.println(manager.getName() + "의 현재 월급은 " + manager.getSalary() + " 만 원입니다.");
 
         System.out.println("");
-        
         
         System.out.println("올린 후의 월급입니다.");
         

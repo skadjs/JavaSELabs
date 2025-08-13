@@ -1,15 +1,19 @@
 package workshop.oop.flexible;
 
-public class Employee {
+public class Employee extends Object {
 	
 	private String name;
 	protected double salary;
     
     public Employee() {
-        super();
     }
     
-    public String getName() {
+    public Employee(String name, double salary) {
+		this.name = name;
+		this.salary = salary;
+	}
+    
+	public String getName() {
         return this.name;
     }
     
