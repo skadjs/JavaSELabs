@@ -7,6 +7,7 @@ import workshop.animal.entity.Pet;
 public class AnimalTest {
 
 	public static void main(String[] args) {
+		
 		// Cat 객체를 생성하는 3가지 방법
 		Cat cat1 = new Cat(); // 5개
 		Pet cat2 = new Cat(); // 3개
