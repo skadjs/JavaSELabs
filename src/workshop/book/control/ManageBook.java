@@ -19,27 +19,33 @@ public class ManageBook {
 			System.out.println(pub); // pub.toString();
 		}
 		
-		//Polymorphic Argument ( 다형적인 아규먼트 )
-		public static void modifyPrice(Publication pub) {
-			//Magazine이면 40%, Novel이면 20%, ReferenceBook 이면 10%
-			double rate = 0.0;
-			
-			if(pub instanceof Magazine) {
-				rate = 0.6; // 40%
-			}
-			
-			if(pub instanceof Novel) {
-				rate = 0.8; // 20%
-			}
-			
-			if(pub instanceof ReferenceBook) {
-				rate = 0.9; // 10%
-			}
-			
-			// 가격 변경
-			pub.setPrice((int)(pub.getPrice() * rate)) {
-				
-			}
+		Publication pub2 = pubs[2]; //빠삐용
+		System.out.println("=== 가격변경 전 ===");
+		System.out.println(pub2.getTitle() + " = " + pub2.getPrice());
+		modifyPrice(pub2);
+		
+		System.out.println("=== 가격변경 후 ===");
+		System.out.println(pub2.getTitle() + " = " + pub2.getPrice());
+	}
+	
+	//Polymorphic Argument ( 다형적인 아규먼트 )
+	public static void modifyPrice(Publication pub) {
+		//Magazine이면 40%, Novel이면 20%, ReferenceBook 이면 10%
+		double rate = 0.0;
+		
+		if(pub instanceof Magazine) {
+			rate = 0.6; // 40%
 		}
+		
+		if(pub instanceof Novel) {
+			rate = 0.8; // 20%
+		}
+		
+		if(pub instanceof ReferenceBook) {
+			rate = 0.9; // 10%
+		}
+		
+		// 가격 변경
+		pub.setPrice((int)(pub.getPrice() * rate));
 	}
 }
