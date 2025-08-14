@@ -14,8 +14,9 @@ public class ManageBook {
 		pubs[3] = new Novel("남한산성","2007-04-14",383,11000,"김훈","대하소설");
 		pubs[4] = new ReferenceBook("실용주의프로그래머","2007-01-14",496,25000,"소프트웨어공학");
 		
+		System.out.println("==== Book 정보 출력 ====");
 		for (Publication pub : pubs) {
-			System.out.println(pub.toString());
+			System.out.println(pub); // pub.toString();
 		}
 		
 	}
