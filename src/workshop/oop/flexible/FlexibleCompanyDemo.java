@@ -24,6 +24,7 @@ public class FlexibleCompanyDemo {
         // Manager(자식)가 가진 getDept() 메서드 호출하기
         Manager itMgr2 = (Manager) itMgr; // Employee 타입인 itMgr을 Manager로 casting
         System.out.println(itMgr2.getDept());
+        // System.out.println(((Manager)itMgr));
        
         // Heterogeneous Collection => Employee 타입의 배열 선언
         // emps 변수 -> Employee[] 타입, emps[0] -> Employee 타입
@@ -47,6 +48,11 @@ public class FlexibleCompanyDemo {
 
 	public static void printEmployeeInfo(Employee[] emps) {
 		for (Employee emp : emps) {
+			// instanceof => emp가 Manager 객체로부터 만들어진 instance인지 체크하는 연산자
+			if(emp instanceof Manager) {
+				// ((Manager) emp).getDept();
+				System.out.println("관리자 부서명 = " + ((Manager)emp).getDept() + " ");
+			}
         	System.out.println(emp.getName() + "의 현재 월급은 " + emp.getSalary() + " 만 원입니다.");
         }
 	}
